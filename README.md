@@ -1,0 +1,1 @@
+# Funny JSON Explorer

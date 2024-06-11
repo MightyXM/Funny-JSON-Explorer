@@ -1,0 +1,24 @@
+{
+  "fruits": [
+    {
+      "name": "apple",
+      "color": "red",
+      "varieties": ["gala", "fuji", "granny smith"]
+    },
+    {
+      "name": "banana",
+      "color": "yellow",
+      "varieties": ["cavendish", "plantain"]
+    }
+  ],
+  "vegetables": [
+    {
+      "name": "carrot",
+      "color": "orange"
+    },
+    {
+      "name": "broccoli",
+      "color": "green"
+    }
+  ]
+}
