@@ -22,10 +22,6 @@ public class RectangleVisualizer implements Visualizer {
     }
 
     private void visualizeNode(JsonNode node, StringBuilder sb, String prefix, boolean isTail,int depth) {
-         // Adjust as needed
-//        int lineLength = maxLineLength - depth * 4; // Decrease line length by 4 for each depth
-//        if (lineLength < 0) lineLength = 0; // Ensure non-negative length
-//        String line = "─".repeat(lineLength);
         if (node.isObject()) {
             var iter = node.fields();
             while (iter.hasNext()) {
@@ -37,11 +33,6 @@ public class RectangleVisualizer implements Visualizer {
                         .append(iconFactory.getBranchIcon())
                         .append(entry.getKey());
                 String line = "─".repeat(maxLineLength-sbtmp.length());
-//                if(depth==0){
-////                    sb.append(sbtmp).append(line).append("┐").append("\n");
-//                    sb.append(sbtmp).append(line).append("│").append("\n");
-//                }else
-//                    sb.append(sbtmp).append(line).append("│").append("\n");
                 sb.append(sbtmp).append(line).append("│").append("\n");
                 visualizeNode(entry.getValue(), sb, prefix + (last ? "│    " : iconFactory.getPipeIcon()), last, depth+1);
             }
