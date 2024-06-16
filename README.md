@@ -79,6 +79,34 @@ poker-face-icon-family: 中间节点icon：♢ 叶节点icon：♤
 - `IconFactory`该接口定义了三个函数，分别用来实现分支符号，结尾符号和管道符号
 - 可以通过添加新的`newFactory`类来添加图标族
 
+
+
+更新：
+
+加入了迭代器+访问者模式
+
+利用访问者来控制创建的是哪个对象
+
+```java
+public class ConcreteVisualizerVisitor implements VisualizerVisitor{
+    @Override
+    public void visit(TreeVisualizer treeVisualizer, JsonNode jsonNode) {
+        System.out.println("Visiting Tree Visualizer");
+        System.out.println(treeVisualizer.visualize(jsonNode));
+    }
+
+    @Override
+    public void visit(RectangleVisualizer rectangleVisualizer, JsonNode jsonNode) {
+        System.out.println("Visiting Rectangle Visualizer");
+        System.out.println(rectangleVisualizer.visualize(jsonNode));
+    }
+}
+```
+
+利用迭代器来实现遍历
+
+
+
 ## 添加新图标族示例
 
 1. 添加新的工厂类，并且继承`IconFactory`接口

@@ -1,9 +1,10 @@
 package com.SoftwareEngineering.visualizer;
 
+import com.SoftwareEngineering.visitor.VisualizerVisitor;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.SoftwareEngineering.icon.IconFactory;
 
-public class TreeVisualizer implements Visualizer {
+public class TreeVisualizer implements Visualizer, VisualizerElement {
     private final IconFactory iconFactory;
 
     public TreeVisualizer(IconFactory iconFactory) {
@@ -40,5 +41,10 @@ public class TreeVisualizer implements Visualizer {
                     .append(node.isTextual() ? node.asText() : node.toString())
                     .append("\n");
         }
+    }
+
+    @Override
+    public void accept(VisualizerVisitor visitor, JsonNode rootNode) {
+        visitor.visit(this, rootNode);
     }
 }

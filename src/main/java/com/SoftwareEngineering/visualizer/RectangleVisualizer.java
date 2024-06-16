@@ -1,9 +1,10 @@
 package com.SoftwareEngineering.visualizer;
 
+import com.SoftwareEngineering.visitor.VisualizerVisitor;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.SoftwareEngineering.icon.IconFactory;
 
-public class RectangleVisualizer implements Visualizer {
+public class RectangleVisualizer implements Visualizer, VisualizerElement {
     private final IconFactory iconFactory;
     int maxLineLength = 55;
     public RectangleVisualizer(IconFactory iconFactory) {
@@ -49,5 +50,10 @@ public class RectangleVisualizer implements Visualizer {
             String line = "─".repeat(maxLineLength-sbtmp.length());
             sb.append(sbtmp).append(line).append("│").append("\n");
         }
+    }
+
+    @Override
+    public void accept(VisualizerVisitor visitor, JsonNode rootNode) {
+        visitor.visit(this, rootNode);
     }
 }
